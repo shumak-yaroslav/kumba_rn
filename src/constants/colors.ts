@@ -1,0 +1,10 @@
+export const primaryColor = '#22A3C3';
+export const activeColor = '#A68BFF';
+export const disabledColor = '#EDF8FA';
+export const backGroundColor = '#FFFFFF';
+export const transparentWhite = 'rgba(255, 255, 255, 0.5)';
+export const transparentBlack = 'rgba(0, 0, 0, 0.5)';
+export const black = '#000000';
+export const white = '#FFFFFF';
+export const textColor = '#112950';
+export const inputTitleColor = '#8A94A6';
