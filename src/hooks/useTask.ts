@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Task} from '../constants/types';
 import {
   saveTaskToStore,
@@ -17,16 +17,10 @@ import {
   updateStoreTask,
 } from '../services/taskService';
 import {addToLocationList, getLocationList} from '../services/locationService';
+import {useTaskContext} from './common';
 
-export const TaskContext = createContext<{
-  tasks: Task[];
-  setTasks: (updatedTasks: Task[]) => void;
-}>({
-  tasks: [],
-  setTasks: () => {},
-});
 const useTask = () => {
-  const {tasks, setTasks} = useContext(TaskContext);
+  const {tasks, setTasks} = useTaskContext();
   const [loading, setLoading] = useState(false);
   const pushTasks = async () => {
     const taskQuery = await getTaskQuery();
@@ -150,6 +144,7 @@ const useTask = () => {
     };
 
     synchronizeTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {

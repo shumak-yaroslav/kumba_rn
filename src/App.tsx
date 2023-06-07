@@ -1,15 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import RootNavigator from './navigation';
 import {StatusBar} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {primaryColor} from './constants/colors';
-import {Task} from './constants/types';
-import {TaskContext} from './hooks/useTask';
+import TaskContextProvider from './providers/taskContext';
 
 function App(): JSX.Element {
-  const [tasks, setTasks] = useState<Task[]>([]);
-
   useEffect(() => {
     StatusBar.setBarStyle('light-content');
     StatusBar.setBackgroundColor(primaryColor);
@@ -17,9 +14,9 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaProvider>
-      <TaskContext.Provider value={{tasks, setTasks}}>
+      <TaskContextProvider>
         <RootNavigator />
-      </TaskContext.Provider>
+      </TaskContextProvider>
     </SafeAreaProvider>
   );
 }
